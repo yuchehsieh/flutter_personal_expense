@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() => runApp(MyApp());
@@ -40,8 +41,55 @@ class MyHomePage extends StatelessWidget {
               ),
               elevation: 5,
             ),
-            Card(
-              child: Text('List of TX'),
+            Column(
+              children: transactions
+                  .map(
+                    (tx) => Card(
+                          child: Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.only(top: 10, bottom: 10),
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.only(left: 20),
+                                    color: Colors.deepOrange,
+                                    child: Text(
+                                      '\$ ${tx.amount.toString()}',
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      padding: EdgeInsets.only(left: 40),
+                                      color: Colors.amberAccent,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            tx.title,
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18),
+                                          ),
+                                          Text(
+                                            DateFormat('yyyy-MM-dd')
+                                                .format(tx.date),
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                                color: Colors.black87,
+                                                fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )),
+                        ),
+                  )
+                  .toList(),
             )
           ],
         ));
