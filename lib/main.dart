@@ -12,7 +12,32 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.amber, accentColor: Colors.deepOrange),
+        primarySwatch: Colors.amber,
+        accentColor: Colors.deepOrange,
+        fontFamily: 'Quicksand',
+//        textTheme: ThemeData.dark().textTheme.copyWith(
+//              title: TextStyle(
+//                fontFamily: 'OpenSans',
+//                fontSize: 18,
+//                fontWeight: FontWeight.w600,
+//              ),
+//            ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                ),
+              ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }

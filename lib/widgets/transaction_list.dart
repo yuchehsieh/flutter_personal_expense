@@ -49,10 +49,7 @@ class TransactionList extends StatelessWidget {
                             Text(
                               userTransaction[index].title,
                               textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context).textTheme.title,
                             ),
                             Text(
                               DateFormat.yMMMd()
