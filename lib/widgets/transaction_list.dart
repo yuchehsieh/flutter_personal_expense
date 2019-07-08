@@ -25,7 +25,7 @@ class TransactionList extends StatelessWidget {
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                           width: 1.0,
                         ),
 //                                      color: Colors.deepOrange,
@@ -34,9 +34,9 @@ class TransactionList extends StatelessWidget {
                         '\$ ${userTransaction[index].amount.toStringAsFixed(2)}',
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                        ),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            color: Theme.of(context).primaryColorDark),
                       ),
                     ),
                     Expanded(
@@ -50,14 +50,18 @@ class TransactionList extends StatelessWidget {
                               userTransaction[index].title,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 16),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
                             ),
                             Text(
                               DateFormat.yMMMd()
                                   .format(userTransaction[index].date),
                               textAlign: TextAlign.start,
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 14),
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                              ),
                             ),
                           ],
                         ),
