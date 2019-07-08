@@ -32,7 +32,7 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Card(
-              margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 50),
+              margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.only(top: 50, bottom: 50),
@@ -41,27 +41,77 @@ class MyHomePage extends StatelessWidget {
               ),
               elevation: 5,
             ),
+            Card(
+              margin: EdgeInsets.only(left: 20, right: 20, bottom: 50),
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Title',
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Amount',
+                      ),
+                    ),
+                    FlatButton(
+                      child: Text('Add Transaction'),
+                      textColor: Colors.lightBlueAccent,
+                      onPressed: () {},
+                    )
+                  ],
+                ),
+              ),
+            ),
             Column(
               children: transactions
                   .map(
                     (tx) => Card(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
                           child: Container(
                               width: double.infinity,
-                              padding: EdgeInsets.only(top: 10, bottom: 10),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 10),
+                              decoration: BoxDecoration(
+//                                border: Border.all(
+////                                  color: Colors.deepOrange,
+//                                  width: 1.0,
+//                                  style: BorderStyle.solid,
+//                                ),
+                                  ),
                               child: Row(
                                 children: <Widget>[
                                   Container(
-                                    margin: EdgeInsets.only(left: 20),
-                                    color: Colors.deepOrange,
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.black,
+                                        width: 1.0,
+                                      ),
+//                                      color: Colors.deepOrange,
+                                    ),
                                     child: Text(
-                                      '\$ ${tx.amount.toString()}',
+                                      '\$ ${tx.amount}',
                                       textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15,
+                                      ),
                                     ),
                                   ),
                                   Expanded(
                                     child: Container(
                                       padding: EdgeInsets.only(left: 40),
-                                      color: Colors.amberAccent,
+//                                      color: Colors.amberAccent,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -71,15 +121,14 @@ class MyHomePage extends StatelessWidget {
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 18),
+                                                fontSize: 16),
                                           ),
                                           Text(
-                                            DateFormat('yyyy-MM-dd')
-                                                .format(tx.date),
+                                            DateFormat.yMMMd().format(tx.date),
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
-                                                color: Colors.black87,
-                                                fontSize: 16),
+                                                color: Colors.grey,
+                                                fontSize: 14),
                                           ),
                                         ],
                                       ),
