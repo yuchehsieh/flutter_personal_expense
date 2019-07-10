@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expense/widgets/chart.dart';
 
 import 'package:personal_expense/widgets/new_transaction.dart';
 import 'package:personal_expense/widgets/transaction_list.dart';
@@ -98,15 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Card(
-              margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-              child: Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: Text('CHART HERE'),
-              ),
-              elevation: 3,
-            ),
+            Chart(_userTransaction),
+//            Card(
+//              margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+//              child: Container(
+//                width: double.infinity,
+//                alignment: Alignment.center,
+//                child: Text('CHART HERE'),
+//              ),
+//              elevation: 3,
+//            ),
             TransactionList(userTransaction: _userTransaction)
           ],
         ),
