@@ -56,6 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
 //    Transaction(id: 't2', amount: 19.99, title: 'Dinner', date: DateTime.now()),
   ];
 
+  List<Transaction> get _recentTransactions {
+    return _userTransaction.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
+
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
       amount: txAmount,
@@ -99,16 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Chart(_userTransaction),
-//            Card(
-//              margin: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-//              child: Container(
-//                width: double.infinity,
-//                alignment: Alignment.center,
-//                child: Text('CHART HERE'),
-//              ),
-//              elevation: 3,
-//            ),
+            Chart(_recentTransactions),
             TransactionList(userTransaction: _userTransaction)
           ],
         ),
