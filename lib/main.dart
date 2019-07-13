@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:personal_expense/widgets/chart.dart';
 
 import 'package:personal_expense/widgets/new_transaction.dart';
 import 'package:personal_expense/widgets/transaction_list.dart';
 import 'models/transaction.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
