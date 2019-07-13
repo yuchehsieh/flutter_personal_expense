@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:personal_expense/widgets/chart.dart';
 
 import 'package:personal_expense/widgets/new_transaction.dart';
@@ -7,7 +7,12 @@ import 'package:personal_expense/widgets/transaction_list.dart';
 import 'models/transaction.dart';
 
 void main() {
-  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // await SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  //   DeviceOrientation.landscapeLeft,
+  //   DeviceOrientation.landscapeRight
+  // ]);
   runApp(MyApp());
 }
 
@@ -88,10 +93,12 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
       context: ctx,
       builder: (bCtx) {
-        return GestureDetector(
-          onTap: () {},
-          child: NewTransaction(_addNewTransaction),
-          behavior: HitTestBehavior.opaque,
+        return SingleChildScrollView(
+          child: GestureDetector(
+            onTap: () {},
+            child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          ),
         );
       },
     );
@@ -142,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: (MediaQuery.of(context).size.height -
                             appBar.preferredSize.height -
                             MediaQuery.of(context).padding.top) *
-                        0.25,
+                        0.7,
                     child: Chart(_recentTransactions))
                 : Container(
                     height: (MediaQuery.of(context).size.height -
