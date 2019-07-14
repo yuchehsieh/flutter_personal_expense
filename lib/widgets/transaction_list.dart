@@ -14,6 +14,9 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return userTransaction.isEmpty
         ? LayoutBuilder(builder: (ctx, constraints) {
             return Column(
@@ -26,7 +29,9 @@ class TransactionList extends StatelessWidget {
                   height: 10,
                 ),
                 Container(
-                  height: constraints.maxHeight * 0.7,
+                  height: isLandscape
+                      ? constraints.maxHeight * 0.7
+                      : constraints.maxHeight * 0.3,
                   child: Image.asset(
                     'assets/images/waiting.png',
                     fit: BoxFit.cover,
