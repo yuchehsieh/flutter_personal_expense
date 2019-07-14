@@ -56,9 +56,11 @@ class _NewTransactionState extends State<NewTransaction> {
       margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       elevation: 5,
       child: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 10,
+        padding: EdgeInsets.only(
+          top: 10,
+          left: 10,
+          right: 10,
+          bottom: MediaQuery.of(context).viewInsets.bottom + 10,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
